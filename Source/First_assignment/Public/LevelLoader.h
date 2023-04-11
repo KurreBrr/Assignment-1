@@ -4,19 +4,18 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "LoadLevel.generated.h"
+#include "LevelLoader.generated.h"
 
 UCLASS()
-class FIRST_ASSIGNMENT_API ALoadLevel : public AActor
+class FIRST_ASSIGNMENT_API ALevelLoader : public AActor
 {
 	GENERATED_BODY()
-
-		UFUNCTION(BlueprintCallable, Category = "Level Loading")
-		void LoadLevel4();
+		UFUNCTION(BlueprintCallable)
+		void LoadLevel();
 	
 public:	
 	// Sets default values for this actor's properties
-	ALoadLevel();
+	ALevelLoader();
 
 protected:
 	// Called when the game starts or when spawned
@@ -25,5 +24,11 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TSoftObjectPtr<UWorld> Level;
+
+	//UGameplayStatics::OpenLevel(GetWorld(), "Level_4");
+
 
 };
